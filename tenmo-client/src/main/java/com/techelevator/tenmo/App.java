@@ -22,6 +22,7 @@ public class App {
     private final ConsoleService consoleService = new ConsoleService();
     private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL);
 
+
     private AuthenticatedUser currentUser;
 
     public static void main(String[] args) {

@@ -1,5 +1,6 @@
 package com.techelevator.tenmo.services;
 
+import com.techelevator.tenmo.App;
 import com.techelevator.tenmo.model.User;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,6 +15,13 @@ public class TenmoService {
     public void setAuthToken(String authToken) {
         this.authToken = authToken;
     }
+
+  //  public App App (){
+  //  }
+
+    //public App app( API_BASE_URL, String currentUser){
+      //  this
+    //}
 
 
 
