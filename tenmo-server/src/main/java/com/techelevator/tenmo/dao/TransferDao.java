@@ -1,8 +1,10 @@
 package com.techelevator.tenmo.dao;
 
+import com.techelevator.tenmo.model.Transfer;
+
 public interface TransferDao {
 
-    double transferMoney( int account);
+    Transfer transferMoney(Transfer transfer);
 
     double withdrawMoney( int accountFrom);
 

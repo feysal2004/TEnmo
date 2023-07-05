@@ -57,8 +57,7 @@ public class JdbcAccountDao implements AccountDao {
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         if (results.next()) {
-            Account account = mapRowToAccount(results);
-            return  account.getBalanceDecimal();
+            return results.getDouble("balance");
         } else {
             return 0.00;
         }
