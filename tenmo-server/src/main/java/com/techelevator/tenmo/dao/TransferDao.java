@@ -12,7 +12,7 @@ public interface TransferDao {
 
     void deposit(Transfer transfer);
 
-    Transfer transferHistory(Transfer transfer);
+    Transfer transferHistory(int id);
 
     List<Transfer> listTransferHistory();
 

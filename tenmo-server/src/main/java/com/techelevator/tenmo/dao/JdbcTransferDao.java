@@ -59,12 +59,12 @@ public class JdbcTransferDao implements TransferDao {
     }
 
     @Override
-    public Transfer transferHistory(Transfer transfer) {
+    public Transfer transferHistory(int id) {
         String sql = "select * from transfer where transfer_id = ?; ";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, transfer.getUserFrom());
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
 
         if (results.next()){
-            transfer = mapToRowTransfer(results);
+            Transfer transfer = mapToRowTransfer(results);
             return transfer;
         }
 
