@@ -2,14 +2,18 @@ package com.techelevator.tenmo.dao;
 
 import com.techelevator.tenmo.model.Transfer;
 
+import java.util.List;
+
 public interface TransferDao {
 
     Transfer transferMoney(Transfer transfer);
 
-    double withdrawMoney( int accountFrom);
+    void withdrawMoney(Transfer transfer);
 
-    double deposit(double depositAmount);
+    void deposit(Transfer transfer);
 
+    Transfer transferHistory(Transfer transfer);
 
+    List<Transfer> listTransferHistory();
 
 }

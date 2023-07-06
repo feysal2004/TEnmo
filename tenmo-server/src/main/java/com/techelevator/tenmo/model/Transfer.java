@@ -5,21 +5,21 @@ public class Transfer {
     private int transferId;
     private int transferStatusId;
     private int transferTypeId;
-    private int accountFrom;
-    private int accountTo;
+    private int userFrom;
+    private int userTo;
     private double amount;
 
     public Transfer(){
 
     }
 
-    public Transfer(int transferId, int transferStatusId, int transferTypeId, int accountFrom, int accountTo, int amount){
+    public Transfer(int transferId, int transferStatusId, int transferTypeId, int userFrom, int userTo, int amount){
 
         this.transferId = transferId;
         this.transferStatusId = transferStatusId;
         this.transferTypeId = transferTypeId;
-        this.accountFrom = accountFrom;
-        this.accountTo = accountTo;
+        this.userFrom = userFrom;
+        this.userTo = userTo;
         this.amount = amount;
 
     }
@@ -50,20 +50,20 @@ public class Transfer {
         this.transferTypeId = transferTypeId;
     }
 
-    public int getAccountFrom() {
-        return accountFrom;
+    public int getUserFrom() {
+        return userFrom;
     }
 
-    public void setAccountFrom(int accountFrom) {
-        this.accountFrom = accountFrom;
+    public void setUserFrom(int userFrom) {
+        this.userFrom = userFrom;
     }
 
-    public int getAccountTo() {
-        return accountTo;
+    public int getUserTo() {
+        return userTo;
     }
 
-    public void setAccountTo(int accountTo) {
-        this.accountTo = accountTo;
+    public void setUserTo(int userTo) {
+        this.userTo = userTo;
     }
 
     public double getAmount() {
