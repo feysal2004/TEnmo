@@ -91,4 +91,8 @@ public class ConsoleService {
     public void printMessage(String message) {
         System.out.println(message);
     }
+
+    public void printBalance(double balance){
+        System.out.println(balance);
+    }
 }
