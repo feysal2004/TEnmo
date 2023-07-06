@@ -74,15 +74,15 @@ public class TenmoController {
          return users;
     }
 
-//    @RequestMapping(path = "/transferHistory/{id}") //ask about adding principal
-//    public Transfer findByTransferId(@PathVariable Transfer transfer){
-//        transfer = transferDao.transferHistory(transfer.getTransferId());
-//        if (transferId == null) {
-//            throw new UserNotActivatedException( "Reservation not found.");
-//        } else {
-//            return transferId;
-//        }
-//    }
+    @RequestMapping(path = "/transferHistory/{id}") //ask about adding principal
+    public Transfer findByTransferId(@PathVariable Transfer transfer){
+        transfer = transferDao.transferHistory(transfer.getTransferId());
+        if (transferId == null) {
+            throw new UserNotActivatedException( "Reservation not found.");
+        } else {
+            return transferId;
+        }
+    }
 
     public List<Transfer> listTransferHistory(Principal principal){
         String username = principal.getName();
