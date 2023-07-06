@@ -1,6 +1,7 @@
 package com.techelevator.tenmo.services;
 
 
+import com.techelevator.tenmo.model.User;
 import com.techelevator.tenmo.model.UserCredentials;
 
 import java.math.BigDecimal;
@@ -95,4 +96,32 @@ public class ConsoleService {
     public void printBalance(double balance){
         System.out.println(balance);
     }
+
+    public void sendMoney(){
+        System.out.println("Please enter an amount to send: ");
+        scanner.nextDouble();
+        scanner.nextLine();
+    }
+
+    public void requestMoney(){
+        System.out.println("Please enter an amount to request: ");
+        scanner.nextDouble();
+        scanner.nextLine();
+    }
+
+    public void AskForUserId(){
+        System.out.println("Enter user id: ");
+        scanner.nextInt();
+        scanner.nextLine();
+    }
+
+    public void printUsers(User[] users){
+        for(User user : users){
+            System.out.println(user.getId() + " " + " " + user.getUsername());
+        }
+    }
+
+
+
+
 }

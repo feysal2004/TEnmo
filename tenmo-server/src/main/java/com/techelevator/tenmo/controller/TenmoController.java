@@ -89,6 +89,7 @@ public class TenmoController {
     @RequestMapping(path = "/transferHistory", method = RequestMethod.GET)
     public List<Transfer> listTransferHistory(Principal principal){
         String username = principal.getName();
+        //TODO finish method to get transfer history list
 
         return transferDao.listTransferHistory();
     }
