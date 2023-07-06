@@ -75,12 +75,12 @@ public class TenmoController {
     }
 
     @RequestMapping(path = "/transferHistory/{id}") //ask about adding principal
-    public Transfer findByTransferId(@PathVariable Transfer transfer){
+    public Transfer findByTransferId(@PathVariable int id){
         transfer = transferDao.transferHistory(transfer.getTransferId());
-        if (transferId == null) {
+        if (transfer == null) {
             throw new UserNotActivatedException( "Reservation not found.");
         } else {
-            return transferId;
+            return transfer;
         }
     }
 
