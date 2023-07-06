@@ -50,12 +50,14 @@ public class TenmoController {
 
     @RequestMapping(path = "/transfer", method = RequestMethod.POST)
     public Transfer transferMoney (@RequestBody Transfer transfer, Principal principal){
-
+        //TODO figure out userTo
         int userId = userDao.findIdByUsername(principal.getName());
+        transfer.setUserFrom(userId);
         if (userId == 0) {
 
             throw new UsernameNotFoundException("Username Not Found");
         } else {
+           transfer.setUserTo(transfer.getUserTo());
             transfer = transferDao.transferMoney(transfer);
            transferDao.withdrawMoney(transfer);
            transferDao.deposit(transfer);
@@ -74,16 +76,17 @@ public class TenmoController {
          return users;
     }
 
-    @RequestMapping(path = "/transferHistory/{id}") //ask about adding principal
+    @RequestMapping(path = "/transferHistory/{id}", method = RequestMethod.GET) //ask about adding principal
     public Transfer findByTransferId(@PathVariable int id){
         transfer = transferDao.transferHistory(transfer.getTransferId());
         if (transfer == null) {
-            throw new UserNotActivatedException( "Reservation not found.");
+            throw new UserNotActivatedException("Id not found.");
         } else {
             return transfer;
         }
     }
 
+    @RequestMapping(path = "/transferHistory", method = RequestMethod.GET)
     public List<Transfer> listTransferHistory(Principal principal){
         String username = principal.getName();
 
