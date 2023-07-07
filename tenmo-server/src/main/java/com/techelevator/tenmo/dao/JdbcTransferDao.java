@@ -60,7 +60,12 @@ public class JdbcTransferDao implements TransferDao {
 
     @Override
     public Transfer transferHistory(int id) {
-        String sql = "select * from transfer where transfer_id = ?; ";
+        String sql = "SELECT transfer_id, transfer_type_id, transfer_status_id, account_from, account_to, amount, tenmo_user.username " +
+                "FROM transfer " +
+                "JOIN account ON transfer.account_from = account.account_id " +
+                "JOIN tenmo_user ON account.user_id = tenmo_user.user_id " +
+                "WHERE transfer_id = ?; " ;
+
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
 
         if (results.next()){
@@ -73,7 +78,12 @@ public class JdbcTransferDao implements TransferDao {
 
     @Override
     public List<Transfer> listTransferHistory() {
-        String sql = "select * from transfer";
+        String sql = "SELECT transfer_id, transfer_type_id, transfer_status_id, account_from, account_to, amount, tenmo_user.username " +
+                "FROM transfer " +
+                "JOIN account ON transfer.account_from = account.account_id " +
+                "JOIN tenmo_user ON account.user_id = tenmo_user.user_id " ;
+
+
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
         List<Transfer> transferHistory = new ArrayList<>();

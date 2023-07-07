@@ -116,7 +116,9 @@ public class App {
         consoleService.printTransferHistory(transferList);
 
 
-        tenmoService.getTransferHistoryById(consoleService.askForTransferId());
+        Transfer transfer = tenmoService.getTransferHistoryById(consoleService.askForTransferId());
+
+        consoleService.printHistoryId(transfer);
 
 	}
 
@@ -145,6 +147,7 @@ public class App {
         User[] usArray = tenmoService.getListOfUsers();
         consoleService.printUsers(usArray);
         makeTransfer.setUserFrom(consoleService.AskForUserId());
+
 
         makeTransfer.setAmount(consoleService.requestMoney());
         makeTransfer.setTransferStatusId(1);

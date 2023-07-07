@@ -138,13 +138,23 @@ public class ConsoleService {
 
     public void printTransferHistory(Transfer[] transfers){
         for(Transfer transfer : transfers){
-            System.out.println("TRANSFER ID:"+transfer.getTransferId() + "  from:"+ transfer.getUserFrom() + " to: " + transfer.getUserTo() + " " +
-                    transfer.getTransferTypeId() + " " + transfer.getTransferStatusId() + "  amount" + transfer.getAmount());
+            System.out.println("TRANSFER ID: "+transfer.getTransferId() + "  FROM: "+ transfer.getUserFrom() + " TO: " + transfer.getUserTo() + " " +
+                    "  AMOUNT: " + transfer.getAmount());
         }
 
     }
 
-    
+    public void printHistoryId(Transfer transfer){
+
+        if (transfer.getTransferId() != 0){
+            System.out.println("TRANSFER ID: "+transfer.getTransferId() + "  FROM: "+ transfer.getUserFrom() + "  TO: " + transfer.getUserTo() + " TYPE: " +
+                    transfer.getTransferTypeId() + " STATUS: " + transfer.getTransferStatusId() + "  AMOUNT: " + transfer.getAmount());
+        }
+
+
+    }
+
+
 
 
 
