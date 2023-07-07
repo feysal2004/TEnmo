@@ -132,7 +132,7 @@ public class App {
         Transfer makeTransfer = new Transfer();
        User[] usArray = tenmoService.getListOfUsers();
         consoleService.printUsers(usArray);
-        makeTransfer.setUserTo( consoleService.AskForUserId());
+        makeTransfer.setUserTo(consoleService.AskForUserId());
 
         makeTransfer.setAmount(consoleService.sendMoney());
         makeTransfer.setTransferStatusId(2);

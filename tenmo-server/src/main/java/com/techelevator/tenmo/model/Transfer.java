@@ -8,12 +8,14 @@ public class Transfer {
     private int userFrom;
     private int userTo;
     private double amount;
+    private String userFromName;
+    private String userToName;
 
     public Transfer(){
 
     }
 
-    public Transfer(int transferId, int transferStatusId, int transferTypeId, int userFrom, int userTo, int amount){
+    public Transfer(int transferId, int transferStatusId, int transferTypeId, int userFrom, int userTo, int amount, String userFromName, String userToName){
 
         this.transferId = transferId;
         this.transferStatusId = transferStatusId;
@@ -21,10 +23,26 @@ public class Transfer {
         this.userFrom = userFrom;
         this.userTo = userTo;
         this.amount = amount;
+        this.userToName = userToName;
+        this.userFromName = userFromName;
 
     }
 
+    public String getUserFromName() {
+        return userFromName;
+    }
 
+    public void setUserFromName(String userFromName) {
+        this.userFromName = userFromName;
+    }
+
+    public String getUserToName() {
+        return userToName;
+    }
+
+    public void setUserToName(String userToName) {
+        this.userToName = userToName;
+    }
 
     public int getTransferId() {
         return transferId;
@@ -73,4 +91,5 @@ public class Transfer {
     public void setAmount(double amount) {
         this.amount = amount;
     }
+
 }

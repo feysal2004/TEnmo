@@ -95,19 +95,21 @@ public class ConsoleService {
     }
 
     public void printBalance(double balance){
-        System.out.println(balance);
+        System.out.println("Your current account balance is: $" + balance);
     }
 
     public double sendMoney(){
         double enterMoney;
+        System.out.println("--------------");
         System.out.println("Please enter an amount to send: ");
-         enterMoney = scanner.nextDouble();
-          scanner.nextLine();
-          return enterMoney;
+        enterMoney = scanner.nextDouble();
+        scanner.nextLine();
+        return enterMoney;
     }
 
     public double requestMoney(){
         double requestMoney;
+        System.out.println("--------------");
         System.out.println("Please enter an amount to request: ");
         requestMoney = scanner.nextDouble();
         scanner.nextLine();
@@ -115,6 +117,7 @@ public class ConsoleService {
     }
 
     public int AskForUserId(){
+        System.out.println("--------------");
         System.out.println("Enter user id: ");
         int askForId;
         askForId = scanner.nextInt();
@@ -124,6 +127,7 @@ public class ConsoleService {
 
     public int askForTransferId(){
         int askForTransferId;
+        System.out.println("--------------");
         System.out.println("Enter Transfer id: ");
         askForTransferId = scanner.nextInt();
         scanner.nextLine();
@@ -132,23 +136,44 @@ public class ConsoleService {
 
     public void printUsers(User[] users){
         for(User user : users){
-            System.out.println(user.getId() + " " + " " + user.getUsername());
+            System.out.println("--------------------------------------------");
+            System.out.format("%7s %10s", "UserID", "Name");
+
+            System.out.println("--------------------------------------------");
+            System.out.format("%7s %10s", user.getId(), user.getUsername());
+
+            System.out.println("--------------------------------------------");
+
         }
     }
 
     public void printTransferHistory(Transfer[] transfers){
+        System.out.println("--------------------------------------------");
+        System.out.format("%7s %10s %10s","TRANSFER IDs",  "FROM/TO", "AMOUNT ");
+        System.out.println("--------------------------------------------");
         for(Transfer transfer : transfers){
-            System.out.println("TRANSFER ID: "+transfer.getTransferId() + "  FROM: "+ transfer.getUserFrom() + " TO: " + transfer.getUserTo() + " " +
-                    "  AMOUNT: " + transfer.getAmount());
+            System.out.format("%7s %10s %10s ",transfer.getTransferId(), "FROM: "+ transfer.getUserFrom(), "$" + transfer.getAmount() + "\n");
+
+            System.out.format("%7s %10s %10s ",transfer.getTransferId(), "TO: "+ transfer.getUserTo(), "$" + transfer.getAmount() + "\n\n");
         }
+
 
     }
 
     public void printHistoryId(Transfer transfer){
 
+        System.out.println("--------------------------------------------");
+        System.out.format("Transfer Details");
+        System.out.println("--------------------------------------------");
+
         if (transfer.getTransferId() != 0){
-            System.out.println("TRANSFER ID: "+transfer.getTransferId() + "  FROM: "+ transfer.getUserFrom() + "  TO: " + transfer.getUserTo() + " TYPE: " +
-                    transfer.getTransferTypeId() + " STATUS: " + transfer.getTransferStatusId() + "  AMOUNT: " + transfer.getAmount());
+
+            System.out.println("Id: " + transfer.getTransferId());
+            System.out.println("From: " + transfer.getUserFrom());
+            System.out.println("To: " + transfer.getUserTo());
+            System.out.println("Type: " + transfer.getTransferTypeId());
+            System.out.println("Status: " + transfer.getTransferStatusId());
+            System.out.println("Amount: " + transfer.getAmount());
         }
 
 

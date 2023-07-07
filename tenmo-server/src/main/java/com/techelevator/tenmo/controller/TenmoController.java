@@ -33,7 +33,6 @@ public class TenmoController {
 
     public TenmoController(UserDao _userDao) {
         this.userDao = _userDao;
-
     }
 
     @RequestMapping (path = "/balance", method = RequestMethod.GET)
@@ -77,14 +76,13 @@ public class TenmoController {
 
     @RequestMapping(path = "/users", method = RequestMethod.GET)
     public List<User>userList(){
-        List<User>users = new ArrayList<>();
-         users = userDao.findAll();
-         return users;
+        List<User> users = userDao.findAll();
+        return users;
     }
 
-    @RequestMapping(path = "/transferHistory/{id}", method = RequestMethod.GET) //ask about adding principal
+    @RequestMapping(path = "/transferHistory/{id}", method = RequestMethod.GET)
     public Transfer findByTransferId(@PathVariable int id){
-        Transfer transfer = null;
+        Transfer transfer;
         transfer = transferDao.transferHistory(id);
         if (transfer == null) {
             throw new UserNotActivatedException("Id not found.");
@@ -97,6 +95,7 @@ public class TenmoController {
     public List<Transfer> listTransferHistory(Principal principal){
         String username = principal.getName();
         //TODO finish method to get transfer history list
+
 
         return transferDao.listTransferHistory();
     }

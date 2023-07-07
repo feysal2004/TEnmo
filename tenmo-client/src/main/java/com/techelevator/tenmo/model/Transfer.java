@@ -8,6 +8,8 @@ public class Transfer {
     private int userFrom;
     private int userTo;
     private double amount;
+    private String userFromName;
+    private String userToName;
 
     public Transfer(){
 
@@ -24,7 +26,21 @@ public class Transfer {
 
     }
 
+    public String getUserFromName() {
+        return userFromName;
+    }
 
+    public void setUserFromName(String userFromName) {
+        this.userFromName = userFromName;
+    }
+
+    public String getUserToName() {
+        return userToName;
+    }
+
+    public void setUserToName(String userToName) {
+        this.userToName = userToName;
+    }
 
     public int getTransferId() {
         return transferId;
