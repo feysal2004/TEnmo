@@ -137,10 +137,10 @@ public class ConsoleService {
     public void printUsers(User[] users){
         for(User user : users){
             System.out.println("--------------------------------------------");
-            System.out.format("%7s %10s", "UserID", "Name");
+            System.out.format("%7s %10s", "UserID", "Name\n");
 
             System.out.println("--------------------------------------------");
-            System.out.format("%7s %10s", user.getId(), user.getUsername());
+            System.out.format("%7s %10s", user.getId(), user.getUsername() + "\n");
 
             System.out.println("--------------------------------------------");
 
@@ -149,12 +149,12 @@ public class ConsoleService {
 
     public void printTransferHistory(Transfer[] transfers){
         System.out.println("--------------------------------------------");
-        System.out.format("%7s %10s %10s","TRANSFER IDs",  "FROM/TO", "AMOUNT ");
+        System.out.format("%7s %15s %16s","Transfers ID",  "From/To", "Amount\n");
         System.out.println("--------------------------------------------");
         for(Transfer transfer : transfers){
-            System.out.format("%7s %10s %10s ",transfer.getTransferId(), "FROM: "+ transfer.getUserFrom(), "$" + transfer.getAmount() + "\n");
+            System.out.format("%7s %15s %16s ",transfer.getTransferId(), "FROM: "+ transfer.getUserFromName(), "$" + transfer.getAmount() + "\n");
 
-            System.out.format("%7s %10s %10s ",transfer.getTransferId(), "TO: "+ transfer.getUserTo(), "$" + transfer.getAmount() + "\n\n");
+            System.out.format("%7s %15s %16s ",transfer.getTransferId(), "TO: "+ transfer.getUserToName(), "$" + transfer.getAmount() + "\n\n");
         }
 
 
@@ -163,16 +163,16 @@ public class ConsoleService {
     public void printHistoryId(Transfer transfer){
 
         System.out.println("--------------------------------------------");
-        System.out.format("Transfer Details");
+        System.out.format("Transfer Details\n");
         System.out.println("--------------------------------------------");
 
         if (transfer.getTransferId() != 0){
 
             System.out.println("Id: " + transfer.getTransferId());
-            System.out.println("From: " + transfer.getUserFrom());
-            System.out.println("To: " + transfer.getUserTo());
-            System.out.println("Type: " + transfer.getTransferTypeId());
-            System.out.println("Status: " + transfer.getTransferStatusId());
+            System.out.println("From: " + transfer.getUserFromName());
+            System.out.println("To: " + transfer.getUserToName());
+            System.out.println("Type: " + transfer.getTransferTypeDescription());
+            System.out.println("Status: " + transfer.getTransferStatusDescription());
             System.out.println("Amount: " + transfer.getAmount());
         }
 

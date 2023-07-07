@@ -72,7 +72,7 @@ public class TenmoService {
         try {
             ResponseEntity<Transfer> response = restTemplate.exchange(API_BASE_URL + "/transferHistory/" + id, HttpMethod.GET, makeAuthEntity(), Transfer.class);
             transfer = response.getBody();
-            System.out.println("here you go");
+            BasicLogger.log("here you go");
         } catch (BasicLoggerException e){
             BasicLogger.log("Invalid id.");
         }

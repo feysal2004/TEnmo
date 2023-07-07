@@ -88,10 +88,14 @@ public class JdbcTransferDao implements TransferDao {
 
     @Override
     public List<Transfer> listTransferHistory() {
-        String sql = "SELECT transfer_id, transfer_type_id, transfer_status_id, account_from, account_to, amount, tenmo_user.username " +
-                "FROM transfer " +
-                "JOIN account ON transfer.account_from = account.account_id " +
-                "JOIN tenmo_user ON account.user_id = tenmo_user.user_id " ;
+        String sql = "SELECT t.transfer_id, tt.transfer_type_desc, ts.transfer_status_desc, t.amount, " +
+                "aFrom.account_id as fromAcct, aFrom.user_id as fromUser, aFrom.balance as fromBal, " +
+                "aTo.account_id as toAcct, aTo.user_id as toUser, aTo.balance as toBal " +
+                "FROM transfer t " +
+                "INNER JOIN transfer_type tt ON t.transfer_type_id = tt.transfer_type_id " +
+                "INNER JOIN transfer_status ts ON t.transfer_status_id = ts.transfer_status_id " +
+                "INNER JOIN account aFrom on account_from = aFrom.account_id " +
+                "INNER JOIN account aTo on account_to = aTo.account_id; ";
 
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -114,13 +118,20 @@ public class JdbcTransferDao implements TransferDao {
 
         User userFrom= userDao.getUserById(sqlRowSet.getInt("fromuser"));
         User userTo = userDao.getUserById(sqlRowSet.getInt("touser"));
+
         transfer.setUserFromName(userFrom.getUsername());
         transfer.setUserToName(userTo.getUsername());
         transfer.setAmount(sqlRowSet.getDouble("amount"));
         transfer.setTransferId(sqlRowSet.getInt("transfer_id"));
+        transfer.setUserTo(sqlRowSet.getInt("fromacct"));
+        transfer.setUserFrom(sqlRowSet.getInt("toacct"));
         //chnage to strings
-        transfer.setTransferStatusId(sqlRowSet.getInt("transfer_status_id"));
-        transfer.setTransferTypeId(sqlRowSet.getInt("transfer_type_id"));
+
+        transfer.setTransferStatusDescription(sqlRowSet.getString("transfer_status_desc"));
+        transfer.setTransferTypeDescription(sqlRowSet.getString("transfer_type_desc"));
+
+//        transfer.setTransferStatusId(sqlRowSet.getInt("transfer_status_id"));
+//        transfer.setTransferTypeId(sqlRowSet.getInt("transfer_type_id"));
         return transfer;
     }
 

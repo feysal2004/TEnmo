@@ -10,7 +10,8 @@ public class Transfer {
     private double amount;
     private String userFromName;
     private String userToName;
-
+    private String transferTypeDescription;
+    private String transferStatusDescription;
     public Transfer(){
 
     }
@@ -26,6 +27,22 @@ public class Transfer {
         this.userToName = userToName;
         this.userFromName = userFromName;
 
+    }
+
+    public String getTransferTypeDescription() {
+        return transferTypeDescription;
+    }
+
+    public void setTransferTypeDescription(String transferTyperDescription) {
+        this.transferTypeDescription = transferTyperDescription;
+    }
+
+    public String getTransferStatusDescription() {
+        return transferStatusDescription;
+    }
+
+    public void setTransferStatusDescription(String transferStatusDescription) {
+        this.transferStatusDescription = transferStatusDescription;
     }
 
     public String getUserFromName() {

@@ -135,8 +135,6 @@ public class App {
         makeTransfer.setUserTo(consoleService.AskForUserId());
 
         makeTransfer.setAmount(consoleService.sendMoney());
-        makeTransfer.setTransferStatusId(2);
-        makeTransfer.setTransferTypeId(2); //server needs to do this
         Transfer moneyTransfer = tenmoService.makeTransfer(makeTransfer);
 
 	}
@@ -151,7 +149,7 @@ public class App {
 
         makeTransfer.setAmount(consoleService.requestMoney());
         makeTransfer.setTransferStatusId(1);
-        makeTransfer.setTransferTypeId(1);
+        makeTransfer.setTransferTypeId(1); //server needs to do this
         Transfer moneyTransfer = tenmoService.makeTransfer(makeTransfer);
 
 	}
