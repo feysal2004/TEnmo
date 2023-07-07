@@ -54,16 +54,22 @@ public class TenmoController {
         int userId = userDao.findIdByUsername(principal.getName());
         transfer.setUserFrom(userId);
         if (userId == 0) {
-
             throw new UsernameNotFoundException("Username Not Found");
+        } else if (userId == userId){
+            throw new UnsupportedOperationException("Not Allowed.");
         } else {
            transfer.setUserTo(transfer.getUserTo());
-            transfer = transferDao.transferMoney(transfer);
-           transferDao.withdrawMoney(transfer);
-           transferDao.deposit(transfer);
-            // call upon withdraw and deposit
-            //
-            return transfer;
+           if (transfer.getAmount() > accountDao.getBalance(transfer.getUserFrom())){
+               throw new UnsupportedOperationException("Not allowed.");
+           } else if (transfer.getAmount() <= 0){
+               throw new UnsupportedOperationException("Not allowed.");
+           } else {
+               transfer = transferDao.transferMoney(transfer);
+               transferDao.withdrawMoney(transfer);
+               transferDao.deposit(transfer);
+
+               return transfer;
+           }
         }
 
     }

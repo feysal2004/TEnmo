@@ -136,7 +136,7 @@ public class App {
 
         makeTransfer.setAmount(consoleService.sendMoney());
         makeTransfer.setTransferStatusId(2);
-        makeTransfer.setTransferTypeId(2);
+        makeTransfer.setTransferTypeId(2); //server needs to do this
         Transfer moneyTransfer = tenmoService.makeTransfer(makeTransfer);
 
 	}
