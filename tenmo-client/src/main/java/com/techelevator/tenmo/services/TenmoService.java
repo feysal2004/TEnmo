@@ -37,6 +37,7 @@ public class TenmoService {
         return doubleBalance;
     }
 
+    //TODO fix this
     public Transfer makeTransfer(){
         Transfer makeTransfer = null;
         try{
@@ -49,6 +50,35 @@ public class TenmoService {
         return makeTransfer;
         //probably in makeauthentity
     }
+
+    public Transfer[] getTransferHistory(){
+        Transfer[] transfersHistory = null;
+
+        try{
+
+            ResponseEntity<Transfer[]> response = restTemplate.exchange(API_BASE_URL + "/transferHistory", HttpMethod.GET, makeAuthEntity(), Transfer[].class);
+            transfersHistory = response.getBody();
+        } catch (BasicLoggerException e){
+            BasicLogger.log("No history available. Try again.");
+        }
+        return transfersHistory;
+    }
+
+    public Transfer getTransferHistoryById(){
+        Transfer transferId = null;
+
+        int id = transferId.getTransferId();
+
+        try {
+            ResponseEntity<Transfer> response = restTemplate.exchange(API_BASE_URL + "/transferHistory/" + id, HttpMethod.GET, makeAuthEntity(), Transfer.class);
+            transferId = response.getBody();
+        } catch (BasicLoggerException e){
+            BasicLogger.log("Invalid id.");
+        }
+        return transferId;
+    }
+
+
 
     public User[] getListOfUsers(){
         User[] users = null;

@@ -111,11 +111,16 @@ public class App {
 
 	private void viewTransferHistory() {
 		// TODO Auto-generated method stub
-		
+        Transfer[] transferList = tenmoService.getTransferHistory();
+        consoleService.printTransferHistory(transferList);
+
+        consoleService.askForTransferId();
+        tenmoService.getTransferHistoryById();
+
 	}
 
 	private void viewPendingRequests() {
-		// TODO Auto-generated method stub
+		// TODO make method and then continue on client side
 		
 	}
 
@@ -132,7 +137,14 @@ public class App {
 
 	private void requestBucks() {
 		// TODO Auto-generated method stub
-		
+
+        User[] usArray = tenmoService.getListOfUsers();
+        consoleService.printUsers(usArray);
+
+        consoleService.AskForUserId();
+        consoleService.requestMoney();
+        Transfer moneyTransfer = tenmoService.makeTransfer();
+
 	}
 
 }
