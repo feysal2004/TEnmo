@@ -38,44 +38,46 @@ public class TenmoService {
     }
 
     //TODO fix this
-    public Transfer makeTransfer(){
-        Transfer makeTransfer = null;
+    public Transfer makeTransfer(Transfer makeTransfer){
+
         try{
 
-            ResponseEntity<Transfer> response = restTemplate.exchange(API_BASE_URL + "/transfer", HttpMethod.POST, makeAuthEntity(), Transfer.class);
-            makeTransfer = response.getBody();
+            ResponseEntity<Transfer> response = restTemplate.exchange(API_BASE_URL + "/transfer", HttpMethod.POST, transferHttpEntity(makeTransfer), Transfer.class);
+            response.getBody();
+           BasicLogger.log("Transfer Successful.");
         }catch (BasicLoggerException e){
             BasicLogger.log("Transfer unsuccessful");
         }
         return makeTransfer;
-        //probably in makeauthentity
+        //probably in makeAuthentity
     }
 
     public Transfer[] getTransferHistory(){
         Transfer[] transfersHistory = null;
+        Transfer historyOfTransfer = new Transfer();
 
         try{
 
-            ResponseEntity<Transfer[]> response = restTemplate.exchange(API_BASE_URL + "/transferHistory", HttpMethod.GET, makeAuthEntity(), Transfer[].class);
+            ResponseEntity<Transfer[]> response = restTemplate.exchange(API_BASE_URL + "/transferHistory", HttpMethod.GET, transferHttpEntity(historyOfTransfer), Transfer[].class);
             transfersHistory = response.getBody();
+            System.out.println("Here is history");
         } catch (BasicLoggerException e){
             BasicLogger.log("No history available. Try again.");
         }
         return transfersHistory;
     }
 
-    public Transfer getTransferHistoryById(){
-        Transfer transferId = null;
-
-        int id = transferId.getTransferId();
+    public Transfer getTransferHistoryById(int id){
+       Transfer transfer =null;
 
         try {
             ResponseEntity<Transfer> response = restTemplate.exchange(API_BASE_URL + "/transferHistory/" + id, HttpMethod.GET, makeAuthEntity(), Transfer.class);
-            transferId = response.getBody();
+            transfer = response.getBody();
+            System.out.println("here you go");
         } catch (BasicLoggerException e){
             BasicLogger.log("Invalid id.");
         }
-        return transferId;
+        return transfer;
     }
 
 
@@ -106,6 +108,13 @@ public class TenmoService {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(authToken);
         return new HttpEntity<>(headers);
+    }
+
+    private HttpEntity<Transfer>transferHttpEntity(Transfer makeTransfer){
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(authToken);
+        return new HttpEntity<>(makeTransfer, headers);
     }
 
 

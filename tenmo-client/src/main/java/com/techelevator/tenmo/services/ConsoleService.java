@@ -98,28 +98,36 @@ public class ConsoleService {
         System.out.println(balance);
     }
 
-    public void sendMoney(){
+    public double sendMoney(){
+        double enterMoney;
         System.out.println("Please enter an amount to send: ");
-        scanner.nextDouble();
-        scanner.nextLine();
+         enterMoney = scanner.nextDouble();
+          scanner.nextLine();
+          return enterMoney;
     }
 
-    public void requestMoney(){
+    public double requestMoney(){
+        double requestMoney;
         System.out.println("Please enter an amount to request: ");
-        scanner.nextDouble();
+        requestMoney = scanner.nextDouble();
         scanner.nextLine();
+        return requestMoney;
     }
 
-    public void AskForUserId(){
+    public int AskForUserId(){
         System.out.println("Enter user id: ");
-        scanner.nextInt();
+        int askForId;
+        askForId = scanner.nextInt();
         scanner.nextLine();
+        return askForId;
     }
 
-    public void askForTransferId(){
+    public int askForTransferId(){
+        int askForTransferId;
         System.out.println("Enter Transfer id: ");
-        scanner.nextInt();
+        askForTransferId = scanner.nextInt();
         scanner.nextLine();
+        return askForTransferId;
     }
 
     public void printUsers(User[] users){
@@ -130,11 +138,13 @@ public class ConsoleService {
 
     public void printTransferHistory(Transfer[] transfers){
         for(Transfer transfer : transfers){
-            System.out.println(transfer.getTransferId() + " "+ transfer.getUserFrom() + " " + transfer.getUserTo() + " " +
-                    transfer.getTransferTypeId() + " " + transfer.getTransferStatusId() + " " + transfer.getAmount());
+            System.out.println("TRANSFER ID:"+transfer.getTransferId() + "  from:"+ transfer.getUserFrom() + " to: " + transfer.getUserTo() + " " +
+                    transfer.getTransferTypeId() + " " + transfer.getTransferStatusId() + "  amount" + transfer.getAmount());
         }
 
     }
+
+    
 
 
 

@@ -27,9 +27,9 @@ public class TenmoController {
     private AccountDao accountDao;
     @Autowired
     private TransferDao transferDao;
-    private Transfer transfer;
 
-    private User user;
+
+
 
     public TenmoController(UserDao _userDao) {
         this.userDao = _userDao;
@@ -78,7 +78,8 @@ public class TenmoController {
 
     @RequestMapping(path = "/transferHistory/{id}", method = RequestMethod.GET) //ask about adding principal
     public Transfer findByTransferId(@PathVariable int id){
-        transfer = transferDao.transferHistory(transfer.getTransferId());
+        Transfer transfer = null;
+        transfer = transferDao.transferHistory(id);
         if (transfer == null) {
             throw new UserNotActivatedException("Id not found.");
         } else {

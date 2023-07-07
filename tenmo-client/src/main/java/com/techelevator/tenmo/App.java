@@ -111,11 +111,12 @@ public class App {
 
 	private void viewTransferHistory() {
 		// TODO Auto-generated method stub
+
         Transfer[] transferList = tenmoService.getTransferHistory();
         consoleService.printTransferHistory(transferList);
 
-        consoleService.askForTransferId();
-        tenmoService.getTransferHistoryById();
+
+        tenmoService.getTransferHistoryById(consoleService.askForTransferId());
 
 	}
 
@@ -126,24 +127,29 @@ public class App {
 
 	private void sendBucks() {
 		// TODO Auto-generated method stub
+        Transfer makeTransfer = new Transfer();
        User[] usArray = tenmoService.getListOfUsers();
         consoleService.printUsers(usArray);
+        makeTransfer.setUserTo( consoleService.AskForUserId());
 
-        consoleService.AskForUserId();
-        consoleService.sendMoney();
-        Transfer moneyTransfer = tenmoService.makeTransfer();
+        makeTransfer.setAmount(consoleService.sendMoney());
+        makeTransfer.setTransferStatusId(2);
+        makeTransfer.setTransferTypeId(2);
+        Transfer moneyTransfer = tenmoService.makeTransfer(makeTransfer);
 
 	}
 
 	private void requestBucks() {
 		// TODO Auto-generated method stub
-
+        Transfer makeTransfer = new Transfer();
         User[] usArray = tenmoService.getListOfUsers();
         consoleService.printUsers(usArray);
+        makeTransfer.setUserFrom(consoleService.AskForUserId());
 
-        consoleService.AskForUserId();
-        consoleService.requestMoney();
-        Transfer moneyTransfer = tenmoService.makeTransfer();
+        makeTransfer.setAmount(consoleService.requestMoney());
+        makeTransfer.setTransferStatusId(1);
+        makeTransfer.setTransferTypeId(1);
+        Transfer moneyTransfer = tenmoService.makeTransfer(makeTransfer);
 
 	}
 
