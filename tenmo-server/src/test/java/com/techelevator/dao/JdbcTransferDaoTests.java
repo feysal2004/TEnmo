@@ -13,10 +13,10 @@ import java.util.List;
 
 public class JdbcTransferDaoTests extends BaseDaoTests{
 
-    protected static final Transfer TRANSFER_1 = new Transfer(3009, 2, 2, 1009, 1013, -80, "jojo", "momo");
-    protected static final Transfer TRANSFER_2 = new Transfer(3033, 2, 2, 1109, 1513, 120, "wendy", "cc");
-    protected static final Transfer TRANSFER_3 = new Transfer(3933, 2, 2, 1909, 1133, 0, "frogMan", "catLover");
-    protected static final Transfer TRANSFER_4 = new Transfer(3300, 2, 2, 1119, 1913, 60, "usernomnom", "unknown");
+    protected static final Transfer TRANSFER_1 = new Transfer(3001, 2, 2, 1001, 1002, 100.50, "user1", "user2");
+    protected static final Transfer TRANSFER_2 = new Transfer(3002, 2, 2, 1003, 1001, 1000.00, "user3", "user1");
+    protected static final Transfer TRANSFER_3 = new Transfer(3003, 2, 2, 1002, 1001, 99.99, "user2", "user1");
+    protected static final Transfer TRANSFER_4 = new Transfer(3004, 2, 2, 1001, 1002, 50.00, "user1", "user2");
 
 
 
@@ -56,14 +56,14 @@ public class JdbcTransferDaoTests extends BaseDaoTests{
 
     @Test
     public void transferHistoryById(){
-        Transfer transfer = test.transferHistory(3009);
+        Transfer transfer = test.transferHistory(TRANSFER_4.getTransferId());
 
-        Assert.assertEquals(TRANSFER_1, transfer);
+        Assert.assertEquals(TRANSFER_4, transfer);
     }
 
     @Test
     public void transferHistoryById_given_invalid_Id(){
-        test.transferHistory(0);
+        test.transferHistory(011);
     }
 
 

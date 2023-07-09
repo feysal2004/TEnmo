@@ -142,7 +142,6 @@ public class ConsoleService {
             System.out.println("--------------------------------------------");
             System.out.format("%7s %10s", user.getId(), user.getUsername() + "\n");
 
-            System.out.println("--------------------------------------------");
 
         }
     }

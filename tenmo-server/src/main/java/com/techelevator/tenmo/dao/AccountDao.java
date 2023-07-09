@@ -7,9 +7,4 @@ public interface AccountDao {
     int getUserId(String username);
     int getAccountId(int userId);
 
-
-
-
-
-
 }

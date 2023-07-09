@@ -75,15 +75,14 @@ public class JdbcTransferDao implements TransferDao {
                 "WHERE t.transfer_id = ?";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
-
+        Transfer transfer = null;
         if (results.next()){
 
+            transfer = mapToRowTransfer(results);
 
-            Transfer transfer = mapToRowTransfer(results);
-            return transfer;
         }
 
-        return null;
+        return transfer;
     }
 
     @Override
@@ -125,13 +124,9 @@ public class JdbcTransferDao implements TransferDao {
         transfer.setTransferId(sqlRowSet.getInt("transfer_id"));
         transfer.setUserTo(sqlRowSet.getInt("fromacct"));
         transfer.setUserFrom(sqlRowSet.getInt("toacct"));
-        //chnage to strings
-
         transfer.setTransferStatusDescription(sqlRowSet.getString("transfer_status_desc"));
         transfer.setTransferTypeDescription(sqlRowSet.getString("transfer_type_desc"));
 
-//        transfer.setTransferStatusId(sqlRowSet.getInt("transfer_status_id"));
-//        transfer.setTransferTypeId(sqlRowSet.getInt("transfer_type_id"));
         return transfer;
     }
 

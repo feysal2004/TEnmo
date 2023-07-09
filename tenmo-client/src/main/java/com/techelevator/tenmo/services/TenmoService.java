@@ -48,7 +48,6 @@ public class TenmoService {
             BasicLogger.log("Transfer unsuccessful");
         }
         return makeTransfer;
-        //probably in makeAuthentity
     }
 
     public Transfer[] getTransferHistory(){

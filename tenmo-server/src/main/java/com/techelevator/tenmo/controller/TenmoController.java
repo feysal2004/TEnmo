@@ -30,7 +30,6 @@ public class TenmoController {
 
 
 
-
     public TenmoController(UserDao _userDao) {
         this.userDao = _userDao;
     }
@@ -54,7 +53,7 @@ public class TenmoController {
         transfer.setUserFrom(userId);
         if (userId == 0) {
             throw new UsernameNotFoundException("Username Not Found");
-        } else if (userId == userId){
+        } else if (principal.getName() == transfer.getUserFromName()){
             throw new UnsupportedOperationException("Not Allowed.");
         } else {
            transfer.setUserTo(transfer.getUserTo());
@@ -75,7 +74,7 @@ public class TenmoController {
 
 
     @RequestMapping(path = "/users", method = RequestMethod.GET)
-    public List<User>userList(){
+    public List<User>userList(Principal principal){
         List<User> users = userDao.findAll();
         return users;
     }

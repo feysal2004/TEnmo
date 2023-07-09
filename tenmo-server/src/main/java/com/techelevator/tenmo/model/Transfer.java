@@ -16,7 +16,7 @@ public class Transfer {
 
     }
 
-    public Transfer(int transferId, int transferStatusId, int transferTypeId, int userFrom, int userTo, int amount, String userFromName, String userToName){
+    public Transfer(int transferId, int transferStatusId, int transferTypeId, int userFrom, int userTo, double amount, String userFromName, String userToName){
 
         this.transferId = transferId;
         this.transferStatusId = transferStatusId;

@@ -1,0 +1,18 @@
+Tenmo app does the following:
+
+register a new user that credits them $1k TE bucks
+POST: /register 
+
+login a user
+POST: /login
+
+and that user has the ability to:
+
+send money from a list of Users
+POST: /transfer
+
+get a list of transfer history
+GET: /transferHistory
+
+get a specific transfer by a transfer id
+GET: /transferHistory/{id}
