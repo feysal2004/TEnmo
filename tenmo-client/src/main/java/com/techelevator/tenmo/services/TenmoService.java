@@ -7,6 +7,7 @@ import com.techelevator.tenmo.model.User;
 import com.techelevator.util.BasicLogger;
 import com.techelevator.util.BasicLoggerException;
 import org.springframework.http.*;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class TenmoService {
         return doubleBalance;
     }
 
-    //TODO fix this
+    @ResponseStatus(HttpStatus.CREATED)
     public Transfer makeTransfer(Transfer makeTransfer){
 
         try{
@@ -50,6 +51,7 @@ public class TenmoService {
         return makeTransfer;
     }
 
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Transfer[] getTransferHistory(){
         Transfer[] transfersHistory = null;
         Transfer historyOfTransfer = new Transfer();
@@ -58,13 +60,14 @@ public class TenmoService {
 
             ResponseEntity<Transfer[]> response = restTemplate.exchange(API_BASE_URL + "/transferHistory", HttpMethod.GET, transferHttpEntity(historyOfTransfer), Transfer[].class);
             transfersHistory = response.getBody();
-            System.out.println("Here is history");
+            BasicLogger.log("Here is history");
         } catch (BasicLoggerException e){
             BasicLogger.log("No history available. Try again.");
         }
         return transfersHistory;
     }
 
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Transfer getTransferHistoryById(int id){
        Transfer transfer =null;
 
