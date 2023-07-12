@@ -1,18 +1,52 @@
 Tenmo app does the following:
 
-register a new user that credits them $1k TE bucks
-POST: /register 
+list all users
+path : /users
+request method: GET
+returns list of users 
+succesful: 200
+error: 400
 
-login a user
-POST: /login
+list transfer history
+path : /transferHistory
+request method : GET
+returns users transfer history
+successful : 200
+error : 400
 
-and that user has the ability to:
+get certain transfer history using id
+path : /transferHistory/{id}
+request method : GET
+returns specific transfer history using id
+successful : 200
+error : 400
 
-send money from a list of Users
-POST: /transfer
+transfers money
+path : /transfer
+request method : POST
+returns new balances for users
+succesfull : 200
+error : 400
 
-get a list of transfer history
-GET: /transferHistory
+see balance
+path : /balance
+request method : GET
+returns users balance
+successful : 200
+error : 400
 
-get a specific transfer by a transfer id
-GET: /transferHistory/{id}
+login
+path : /login
+request method: POST
+returns logged in user
+succesful : 200
+error : 400
+
+create user
+path : /register
+request method : CREATED
+returns new user
+succesfull : 200
+error : 400
+
+
