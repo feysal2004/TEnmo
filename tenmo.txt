@@ -35,18 +35,4 @@ returns users balance
 successful : 200
 error : 400
 
-login
-path : /login
-request method: POST
-returns logged in user
-succesful : 200
-error : 400
-
-create user
-path : /register
-request method : CREATED
-returns new user
-succesfull : 200
-error : 400
-
 
